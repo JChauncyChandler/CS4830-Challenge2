@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html>
 <head>
     <title>Challenge 2</title>
@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
+    <script src="Script1.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -20,40 +20,13 @@
     <!-- Latest compiled and minified Locales -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/locale/bootstrap-table-zh-CN.min.js"></script>
     <script>
-        window.onload = function() {
-                document.getElementById("button1").disabled = true;
-                document.getElementById("button2").disabled = true;
-                document.getElementById("button3").disabled = true;
-            };
-       
         
-         function enableBtn1(){
-            document.getElementById("button1").disabled = false;
-           }
-        function enableBtn2(){
-            document.getElementById("button2").disabled = false;
-           }
-        function enableBtn3(){
-            document.getElementById("button3").disabled = false;
-           }
-        (function() {
-    $('form > input').keyup(function() {
-
-        var empty = false;
-        $('form > input').each(function() {
-            if ($(this).val() == '') {
-                empty = true;
-            }
-        });
-
-        if (empty) {
-            document.getElementById("button1").disabled = false;
-        } else {
-            document.getElementById("button1").disabled = true;
-        }
-    });
-})()
     </script>
+    <style>
+        button{
+            margin: 5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -62,56 +35,10 @@
             <h1>Challenge 2 - CS 4830</h1>
         </div>
         <div class="row">
-        <div class="col-md-4">
             <section id="main-content">
-                <form id="contact-form" method="post" action="" role="form">
-
-                        <div class="messages"></div>
-
-                            <div class="controls">
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="form_name">Name *</label>
-                                            <input id="form_name" type="text" name="name" class="form-control"  required="required" >
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="form_lastname">Capacity *</label>
-                                            <input id="form_lastname" type="number" name="capacity" class="form-control"  required="required" >
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="form_email">Ticket Price *</label>
-                                            <input id="form_email" type="number" name="ticketPrice" class="form-control" required="required" >
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                                
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <p class="text-muted"><strong>*</strong> These fields are required.</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <button type="button" id="button1" class="btn btn-primary">Submit</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </form>
+                <h2>Stadium</h2>
                   <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" >
                                 <thead>
                                     <tr>
                                         <th>Name</th>
@@ -121,70 +48,27 @@
                                     
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    
+                                <tbody id="stadiumtable">
+                                    <tr>
+                                        <td><input id="stadiumName" /></td>
+                                        <td><input /></td>
+                                        <td><input /></td>
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-sm" onclick="stadiumAdd()">Add</button><button type="button" class="btn btn-primary btn-sm">Update</button>
+                                            <button type="button" class="btn btn-danger btn-sm" onclick="stadiumDelete()">Delete</button>
+                                        </td>
+
+                                    </tr>
                                 </tbody>
                             </table>
                     </div>
             </section>
         </div>
-            <div class="col-md-4">
+            <div class="row">
                 <section id="main-content">
-            
-                    <form id="contact-form" method="post" action="" role="form">
-
-                        <div class="messages"></div>
-
-                            <div class="controls">
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="form_name">First Name *</label>
-                                            <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your first name *" required="required" data-error="First Name is required.">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="form_lastname">Last Name *</label>
-                                            <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter your last name *" required="required" data-error="Last Name is required.">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="form_email">Age *</label>
-                                            <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required.">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="form_phone">Salary</label>
-                                            <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Please enter your phone">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <p class="text-muted"><strong>*</strong> These fields are required.</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <button type="button" id="button2" class="btn btn-primary">Submit</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </form>
+                    <h2>Players</h2>
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" >
                                 <thead>
                                     <tr>
                                         <th>First Name</th>
@@ -194,62 +78,28 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    
+                                <tbody id="playerTable">
+                                    <tr>
+                                        <td><input id="firstname" /></td>
+                                        <td><input id="lastName" /></td>
+                                        <td><input /></td>
+                                        <td><input /></td>
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-sm" onclick="playerAdd()">Add</button><button type="button" class="btn btn-primary btn-sm" onclick="playerUpdate()">Update</button>
+                                            <button type="button" class="btn btn-danger btn-sm" onclick="playerDelete()">Delete</button>
+                                        </td>
+                                        
+                                    </tr>
                                 </tbody>
                             </table>
                     </div>
             </section>
             </div>
-            <div class="col-md-4">
+            <div class="row">
                 <section id="main-content">
-
-                <form id="contact-form" method="post" action="" role="form">
-
-                        <div class="messages"></div>
-
-                            <div class="controls">
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="form_name">City *</label>
-                                            <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your first name *" required="required" data-error="First Name is required.">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="form_lastname">Name *</label>
-                                            <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter your last name *" required="required" data-error="Last Name is required.">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="form_email">HomeStadium *</label>
-                                            <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required.">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <p class="text-muted"><strong>*</strong> These fields are required.</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <button type="button" id="button3" class="btn btn-primary">Submit</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </form>
+                    <h2>Teams</h2>
                   <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" >
                                 <thead>
                                     <tr>
                                         <th>City</th>
@@ -259,15 +109,26 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    
+                                <tbody id="teamTable">
+                                    <tr>
+                                        <td><input id="cityName" /></td>
+                                        <td><input id="teamName" /></td>
+                                        <td>
+                                            <select name="stadiums"></select>
+                                        </td>
+                                        <td><textarea></textarea></td>
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-sm" onclick="teamAdd()">Add</button><button type="button" class="btn btn-primary btn-sm" onclick="teamUpdate()">Update</button>
+                                            <button type="button" class="btn btn-danger btn-sm" onclick="teamDelete()">Delete</button>
+                                        </td>
+
+                                    </tr>
                                 </tbody>
                             </table>
                     </div>
             </section>
             </div>
         </div>
-    </div>
 </body>
 
 </html>
