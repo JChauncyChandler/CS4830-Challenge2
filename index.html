@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html>
 <head>
     <title>Challenge 2</title>
@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="Script1.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-
+    <script src="Script1.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.css">
     <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
@@ -25,6 +24,9 @@
     <style>
         button{
             margin: 5px;
+        }
+        select{
+            width: 100%;
         }
     </style>
 </head>
@@ -54,8 +56,8 @@
                                         <td><input /></td>
                                         <td><input /></td>
                                         <td>
-                                            <button type="button" class="btn btn-success btn-sm" onclick="stadiumAdd()">Add</button><button type="button" class="btn btn-primary btn-sm">Update</button>
-                                            <button type="button" class="btn btn-danger btn-sm" onclick="stadiumDelete()">Delete</button>
+                                            <button type="button" class="btn btn-success btn-sm" onclick="stadiumAdd(document.getElementById('stadiumName').value)">Add</button><button type="button" class="btn btn-primary btn-sm" onclick="stadiumAdd(document.getElementById('stadiumName').value)">Update</button>
+                                            <button type="button" class="btn btn-danger btn-sm" onclick="$(this).closest('tr').remove();">Delete</button>
                                         </td>
 
                                     </tr>
@@ -86,7 +88,7 @@
                                         <td><input /></td>
                                         <td>
                                             <button type="button" class="btn btn-success btn-sm" onclick="playerAdd()">Add</button><button type="button" class="btn btn-primary btn-sm" onclick="playerUpdate()">Update</button>
-                                            <button type="button" class="btn btn-danger btn-sm" onclick="playerDelete()">Delete</button>
+                                            <button type="button" class="btn btn-danger btn-sm" onclick="$(this).closest('tr').remove();">Delete</button>
                                         </td>
                                         
                                     </tr>
@@ -119,7 +121,7 @@
                                         <td><textarea></textarea></td>
                                         <td>
                                             <button type="button" class="btn btn-success btn-sm" onclick="teamAdd()">Add</button><button type="button" class="btn btn-primary btn-sm" onclick="teamUpdate()">Update</button>
-                                            <button type="button" class="btn btn-danger btn-sm" onclick="teamDelete()">Delete</button>
+                                            <button type="button" class="btn btn-danger btn-sm" onclick="$(this).closest('tr').remove();">Delete</button>
                                         </td>
 
                                     </tr>
